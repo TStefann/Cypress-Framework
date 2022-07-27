@@ -41,12 +41,8 @@ describe("Authentication scenarios", () => {
     cy.url().should("not.contain", "/login");
     HomePage.goToSettings()
     HomePage.logOutbutton()
-    cy.contains("Sign in").should('be.visible')
-
-    
+    cy.contains("Sign in").should('be.visible') 
   });
- 
-   
   });
 
 
