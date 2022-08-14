@@ -3,38 +3,39 @@
 // create various custom commands and overwrite
 // existing commands.
 //
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-//  Cypress.Commands.add('loginHeadless', (email, password) => { 
 
-//     cy.request('POST' , 'https://api.realworld.io/api/users/login' ,
-//      {"email": email,
-//     "password": password}).its('body').then(body => {
-//         const token = body.user.token
-//         cy.visit('/',{
-//         oneBeforeLoad(win){
-//             win.localStorage.setItem('jwToken', token)
-//         }
-//     }
-//         )
-//     })
+ Cypress.Commands.add('loginHeadless', (email, password) => { 
+    const userCredentials = {
+        "user" : {
+            'email': email,
+            'password': password
+        }
+    }
+
+cy.request('POST' , 'https://api.realworld.io/api/users/login' , userCredentials
+).its('body').then(body => {
+    const token = body.user.token
+    cy.visit('/',{
+    onBeforeLoad(win){
+        win.localStorage.setItem('jwtToken' , token)
+    }
+}
+    )
+})
+})
 
 
-//  })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+ Cypress.Commands.add('signUpHeadless', (email, password, userName) => { 
+   const userCredentials = {"user" : {
+        'email': email,
+        'password': password,
+        'username': userName,
+    }
+}
+
+
+cy.request('POST' , 'https://api.realworld.io/api/users' , userCredentials
+).then((resp) => 
+expect(resp.status).to.eq(200))} )
+

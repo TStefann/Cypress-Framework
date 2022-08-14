@@ -1,10 +1,9 @@
-import { Helpers } from "../helpers";
 import { HomePage } from "../pages/homepage.page";
 import { LoginPage } from "../pages/login.page";
 
 describe('', () => {
     beforeEach(() => {
-        Helpers.loginHeadless(LoginPage.users.email,LoginPage.users.password)
+       cy.loginHeadless(LoginPage.users.email,LoginPage.users.password)
         cy.intercept('GET', 'api/tags').as('tags')
         
       });
