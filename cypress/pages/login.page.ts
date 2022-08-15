@@ -10,7 +10,6 @@ export class LoginPage {
     password: "123456",
   };
 
-
   static typeEmail = (email: string) =>
     cy
       .get(this.selectors.emailInput)

@@ -1,14 +1,13 @@
 export class SignUp {
-    static selectors = {
-      emailInput: "[formcontrolname='email']",
-      passwordInput: '[formcontrolname="password"]',
-      submitLogin: 'button[type="submit"]',
-      userNameInput: "[formcontrolname='username']",
-      submitButton: "[type='submit']"
-    };
-  
+  static selectors = {
+    emailInput: "[formcontrolname='email']",
+    passwordInput: '[formcontrolname="password"]',
+    submitLogin: 'button[type="submit"]',
+    userNameInput: "[formcontrolname='username']",
+    submitButton: "[type='submit']",
+  };
 
-    static typeUserName = (email: string) =>
+  static typeUserName = (email: string) =>
     cy
       .get(this.selectors.userNameInput)
       .should("be.visible")
@@ -17,8 +16,7 @@ export class SignUp {
       .type(email)
       .should("have.value", email);
 
-    
-    static typeEmail = (email: string) =>
+  static typeEmail = (email: string) =>
     cy
       .get(this.selectors.emailInput)
       .should("be.visible")
@@ -35,6 +33,6 @@ export class SignUp {
       .clear()
       .type(password);
 
-      static submitSignUp = () =>
-      cy.get(this.selectors.submitLogin).should("be.visible").click();
+  static submitSignUp = () =>
+    cy.get(this.selectors.submitLogin).should("be.visible").click();
 }
