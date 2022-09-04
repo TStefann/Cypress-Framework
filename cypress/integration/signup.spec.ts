@@ -13,7 +13,7 @@ describe("Sign in a new user", () => {
   });
 
   it("Signup new user successful", () => {
-    cy.contains("Sign up").should("be.visible").click();
+    cy.get(SignUp.selectors.signUpBtn).should("be.visible").click();
     cy.url().should("contain", "/register");
 
     SignUp.typeUserName(randomUserName);
@@ -26,7 +26,7 @@ describe("Sign in a new user", () => {
   });
 
   it("Signup existing user", () => {
-    cy.contains("Sign up").should("be.visible").click();
+    cy.get(SignUp.selectors.signUpBtn).should("be.visible").click();
     cy.url().should("contain", "/register");
 
     SignUp.typeUserName(randomUserName);
@@ -43,7 +43,7 @@ describe("Sign in a new user", () => {
     const randomPassword = faker.internet.password();
 
     cy.signUpHeadless(randomEmail, randomPassword, randomUserName);
-    cy.contains("Sign in").should("be.visible").click();
+    cy.get(LoginPage.selectors.logInBtn).should("be.visible").click();
     LoginPage.typeEmail(randomEmail);
     LoginPage.typePassword(randomPassword);
     LoginPage.submitLoginForm();

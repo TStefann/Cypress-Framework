@@ -3,6 +3,7 @@ export class LoginPage {
     emailInput: "[formcontrolname='email']",
     passwordInput: '[formcontrolname="password"]',
     submitLogin: 'button[type="submit"]',
+    logInBtn: "a[routerlink= '/login']",
   };
 
   static users = {

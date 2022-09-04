@@ -8,7 +8,7 @@ describe("Authentication scenarios", () => {
   });
 
   it("Login success case", () => {
-    cy.contains("Sign in").should("be.visible").click();
+    cy.get(LoginPage.selectors.logInBtn).should("be.visible").click();
     LoginPage.typeEmail(LoginPage.users.email);
     LoginPage.typePassword(LoginPage.users.password);
     LoginPage.submitLoginForm();
@@ -18,7 +18,7 @@ describe("Authentication scenarios", () => {
   });
 
   it("Login unsuccessful case", () => {
-    cy.contains("Sign in").should("be.visible").click();
+    cy.get(LoginPage.selectors.logInBtn).should("be.visible").click();
     LoginPage.typeEmail(LoginPage.users.email);
     LoginPage.typePassword("wrongPassword");
     LoginPage.submitLoginForm();
@@ -30,7 +30,7 @@ describe("Authentication scenarios", () => {
   });
 
   it("Login/Logout success case", () => {
-    cy.contains("Sign in").should("be.visible").click();
+    cy.get(LoginPage.selectors.logInBtn).should("be.visible").click();
     LoginPage.typeEmail(LoginPage.users.email);
     LoginPage.typePassword(LoginPage.users.password);
     LoginPage.submitLoginForm();
@@ -39,6 +39,6 @@ describe("Authentication scenarios", () => {
     cy.url().should("not.contain", "/login");
     HomePage.goToSettings();
     HomePage.logOutbutton();
-    cy.contains("Sign in").should("be.visible");
+    cy.get(LoginPage.selectors.logInBtn).should("be.visible");
   });
 });

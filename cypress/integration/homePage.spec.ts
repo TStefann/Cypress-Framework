@@ -20,7 +20,7 @@ describe("", () => {
     HomePage.filterArticleTagsAreDisplayed(tag);
   });
 
-  it.only("Create a new article", () => {
+  it("Create a new article and check it in Global Feed", () => {
     const articleTitle = faker.random.word();
     const articleDetails = faker.random.word();
     const articleText = faker.random.words();
