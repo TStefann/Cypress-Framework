@@ -5,6 +5,7 @@ export class SignUp {
     submitLogin: 'button[type="submit"]',
     userNameInput: "[formcontrolname='username']",
     submitButton: "[type='submit']",
+    signUpBtn: "a[href= '/register']",
   };
 
   static typeUserName = (email: string) =>
