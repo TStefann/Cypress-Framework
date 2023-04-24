@@ -1,4 +1,4 @@
-name: Git flow
+name: Git flow.
 
 on:
   pull_request:
