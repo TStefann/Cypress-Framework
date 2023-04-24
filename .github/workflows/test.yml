@@ -1,4 +1,4 @@
-name: CI
+name: Run Tests on Pull Request and Push
 
 on:
   pull_request:
@@ -9,18 +9,14 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        node-version: [14.x]
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
-          node-version: [16.x]
+          node-version: ${{ matrix.node-version }}
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npx cypress run --record false --browser chrome
+      - run: npx cypress run --record false --browser chrome
