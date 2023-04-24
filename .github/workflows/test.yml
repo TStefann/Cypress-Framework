@@ -20,4 +20,4 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       # - run: npm run lint
-      - run: "npx cypress run --record false --browser chrome
+      - run: npx cypress run --record false --browser chrome
