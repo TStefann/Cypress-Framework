@@ -5,7 +5,9 @@ on:
     branches: [master]
   push:
     branches: [master]
-
+env:
+  CYPRESS_RECORD_KEY: "581d26a9-18a7-471a-a53d-d3c2149dd2cb"
+  CYPRESS_PROJECT_ID: "2d23sb"
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -20,3 +22,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm run cy_run
+    env:
+      CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
