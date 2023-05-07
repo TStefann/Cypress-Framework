@@ -2,8 +2,8 @@ name: CI
 
 on: [push]
 env:
-  CYPRESS_RECORD_KEY: "581d26a9-18a7-471a-a53d-d3c2149dd2cb"
-  CYPRESS_PROJECT_ID: "2d23sb"
+  CYPRESS_RECORD_KEY: "489603f4-ef18-4135-a6ef-7fb776d1f308"
+  CYPRESS_PROJECT_ID: "br1yph"
 jobs:
   test:
     runs-on: ubuntu-latest
