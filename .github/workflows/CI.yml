@@ -17,8 +17,4 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-      - run: npm run cy_run
-    env:
-      CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: npx cypress run --browser chrome --record --group "pipeline-${{ github.run_id }}"
