@@ -1,10 +1,6 @@
 name: CI
 
-on:
-  pull_request:
-    branches: [master]
-  push:
-    branches: [master]
+on: [push]
 env:
   CYPRESS_RECORD_KEY: "581d26a9-18a7-471a-a53d-d3c2149dd2cb"
   CYPRESS_PROJECT_ID: "2d23sb"
