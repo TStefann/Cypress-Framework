@@ -43,6 +43,7 @@ export class HomePage {
     articleDetails: string
   ) => {
     cy.get(this.selectors.articlePreview)
+      .first()
       .should("be.visible")
       .within(() => {
         cy.contains(articleTitle).should("be.visible");
