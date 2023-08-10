@@ -33,7 +33,7 @@ describe("", () => {
       tag
     );
     cy.wait("@article").its("response.statusCode").should("eq", 307);
-    cy.wait("@article").its("response.statusCode").should("eq", 200);
+    cy.wait("@article").its("response.statusCode").should("eq", 201);
 
     cy.visit("/");
     cy.contains("Global Feed").should("be.visible").click();
