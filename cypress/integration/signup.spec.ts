@@ -21,7 +21,7 @@ describe("Sign in a new user", () => {
     SignUp.typePassword(randomPassword);
     SignUp.submitSignUp();
     cy.wait("@signUp").its("response.statusCode").should("eq", 307);
-    cy.wait("@signUp").its("response.statusCode").should("eq", 200);
+    cy.wait("@signUp").its("response.statusCode").should("eq", 201);
     cy.url().should("not.contain", "/register");
   });
 

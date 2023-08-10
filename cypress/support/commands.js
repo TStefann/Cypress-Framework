@@ -41,5 +41,5 @@ Cypress.Commands.add("signUpHeadless", (email, password, userName) => {
     "POST",
     "https://api.realworld.io/api/users",
     userCredentials
-  ).then(resp => expect(resp.status).to.eq(200));
+  ).then(resp => expect(resp.status).to.eq(201));
 });
