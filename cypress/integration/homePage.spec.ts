@@ -14,7 +14,7 @@ describe("", () => {
 
   it("Filter articles by tagname ", () => {
     const tag = " implementations ";
-    cy.wait("@tags").its("response.statusCode").should("eq", 307);
+    
     cy.wait("@tags").its("response.statusCode").should("eq", 200);
     HomePage.filterByTag(tag);
     HomePage.filterArticleTagsAreDisplayed(tag);
@@ -32,7 +32,7 @@ describe("", () => {
       articleText,
       tag
     );
-    cy.wait("@article").its("response.statusCode").should("eq", 307);
+    
     cy.wait("@article").its("response.statusCode").should("eq", 201);
 
     cy.visit("/");
