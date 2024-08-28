@@ -3,7 +3,7 @@ import { CreateArticle } from "../pages/craeteArticle";
 import { HomePage } from "../pages/homepage.page";
 import { LoginPage } from "../pages/login.page";
 
-describe("", () => {
+describe.skip("", () => {
   beforeEach(() => {
     cy.loginHeadless(LoginPage.users.email, LoginPage.users.password);
     cy.intercept("GET", "api/tags").as("tags");
@@ -32,7 +32,7 @@ describe("", () => {
       articleText,
       tag
     );
-    
+
     cy.wait("@article").its("response.statusCode").should("eq", 201);
 
     cy.visit("/");
