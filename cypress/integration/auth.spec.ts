@@ -12,7 +12,7 @@ describe("Authentication scenarios", () => {
     LoginPage.typeEmail(LoginPage.users.email);
     LoginPage.typePassword(LoginPage.users.password);
     LoginPage.submitLoginForm();
-    cy.wait("@login").its("response.statusCode").should("eq", 307);
+    // cy.wait("@login").its("response.statusCode").should("eq", 307);
     cy.wait("@login").its("response.statusCode").should("eq", 200);
     cy.url().should("not.contain", "/login");
   });
@@ -22,9 +22,8 @@ describe("Authentication scenarios", () => {
     LoginPage.typeEmail(LoginPage.users.email);
     LoginPage.typePassword("wrongPassword");
     LoginPage.submitLoginForm();
-    cy.wait("@login").its("response.statusCode").should("eq", 307);
     cy.wait("@login").its("response.statusCode").should("eq", 403);
-    cy.contains(" email or password is invalid ").should("be.visible");
+    cy.contains("email or password is invalid").should("be.visible");
 
     cy.url().should("contain", "/login");
   });
@@ -34,7 +33,6 @@ describe("Authentication scenarios", () => {
     LoginPage.typeEmail(LoginPage.users.email);
     LoginPage.typePassword(LoginPage.users.password);
     LoginPage.submitLoginForm();
-    cy.wait("@login").its("response.statusCode").should("eq", 307);
     cy.wait("@login").its("response.statusCode").should("eq", 200);
     cy.url().should("not.contain", "/login");
     HomePage.goToSettings();

@@ -7,8 +7,8 @@ export class LoginPage {
   };
 
   static users = {
-    email: "test@1234@gmail.com",
-    password: "123456",
+    email: "123test123",
+    password: "123test123",
   };
 
   static typeEmail = (email: string) =>
