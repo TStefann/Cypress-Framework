@@ -19,7 +19,7 @@ jobs:
       - run: npm ci
       - run: npx cypress run --browser chrome --record --group "pipeline-${{ github.run_id }}"
       - name: Upload artifacts
-      uses: actions/upload-artifact@v3
-      with: 
-        name: videos
-        path: cypress/videos
+        uses: actions/upload-artifact@v3
+        with: 
+          name: videos
+          path: cypress/videos
