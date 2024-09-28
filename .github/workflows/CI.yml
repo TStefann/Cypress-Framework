@@ -9,9 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     # strategy:
     #   matrix:
-    #     node-version: [20.x]  
-
-    
+    #     node-version: [20.x]
     steps:
       - name: Get code
         uses: actions/checkout@v3
