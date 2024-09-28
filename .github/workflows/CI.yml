@@ -12,11 +12,13 @@ jobs:
         node-version: [20.x]
     steps:
       - uses: actions/checkout@v3
+      - name: Cache dependencies
+        with:
+          path: ~/.npm
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
       - run: npm ci
       - run: npx cypress run --browser chrome --record --group "pipeline-${{ github.run_id }}"
       - name: Upload artifacts
