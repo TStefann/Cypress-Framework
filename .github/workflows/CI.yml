@@ -7,9 +7,9 @@ env:
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20.x]
+    # strategy:
+    #   matrix:
+    #     node-version: [20.x]
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -18,64 +18,12 @@ jobs:
         with:
           path: ~/.npm
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-  
-      # - name: Cache dependencies
-        # uses: actions/cache@v3
-        # # id: cache-npm
-        # with:
-        #   path: |
-        #     ~/.npm
-        #   key: deps-node-module-${{ hashFiles('package-lock.json', 'package.json') }}
-
-      
-
-      # - name: Use Node.js ${{ matrix.node-version }}
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: ${{ matrix.node-version }}
-      #     cache: 'npm'
-
       - name: Install dependencies
-        run: npm install
-      - name: e2e Tests
+        run: npm ci
+      - name: Cypress Tests
         run: npx cypress run --browser chrome --record --group "pipeline-${{ github.run_id }}"
-      - name: Upload artifacts
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with: 
           name: videos
           path: cypress/videos
-
-
-
-
-# name: CI
-
-# on: [push, workflow_dispatch]
-# env:
-#   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-#   CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
-# jobs:
-#   test:
-#     runs-on: ubuntu-latest
-#     strategy:
-#       matrix:
-#         node-version: [20.x]
-#     steps:
-#       - name: Get code
-#         uses: actions/checkout@v3
-    
-#       - name: Cache dependencies
-#         uses: actions/cache@v3
-#         id: cache-npm
-#         with:
-#           path: |
-#             ~/.npm
-#             node_modules
-#           key: deps-node-module-${{ hashFiles('package-lock.json', 'package.json') }}
-#       - run: npm install
-#       - run: npx cypress run --browser chrome --record --group "pipeline-${{ github.run_id }}"
-#       - name: Upload artifacts
-#         uses: actions/upload-artifact@v3
-#         with: 
-#           name: videos
-#           path: cypress/videos
