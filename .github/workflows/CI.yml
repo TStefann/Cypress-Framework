@@ -26,7 +26,8 @@ jobs:
         with:
           path: |
             ~/.npm
-          key: deps-node-module-${{ hashFiles('**/package-lock.json') }}
+          key: deps-node-module-${{ hashFiles('package-lock.json', 'package.json') }}
+
       
 
       # - name: Use Node.js ${{ matrix.node-version }}
