@@ -16,6 +16,7 @@ module.exports = defineConfig({
     watchForFileChanges: false,
     numTestsKeptInMemory: 3,
     specPattern: "cypress/integration/*.ts",
+    vide:false,
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on);
     },
