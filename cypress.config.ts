@@ -8,7 +8,6 @@ module.exports = defineConfig({
     embeddedScreenshots: true,
     inlineAssets: true,
     saveAllAttempts: false,
-    videoOnFailOnly:true
   },
   e2e: {
     baseUrl: "https://angular.realworld.how",
